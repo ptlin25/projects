@@ -32,7 +32,7 @@ class TicTacToe:
                 char = self.board[0][col]
         
         if (self.board[0][0] == self.board[1][1] == self.board[2][2] != " " or
-                self.borad[2][0] == self.board[1][1] == self.board[0][2] != " "):
+                self.board[2][0] == self.board[1][1] == self.board[0][2] != " "):
             char = self.board[0][0]
 
         if char:
