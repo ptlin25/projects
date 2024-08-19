@@ -28,5 +28,15 @@ def team_transfers(request, team_id):
     
     transfers = requests.get(url, headers=headers).json().get('response')
     transfers.sort(key=lambda transfer: transfer['transfers'][0]['date'], reverse=True)
-    return render(request, "transfers/team_transfers.html", {'team_id': team_id, 'transfers': transfers})
+
+    url = "https://v3.football.api-sports.io/teams?id={team_id}".format(team_id=team_id)
+
+    headers = {
+        'x-rapidapi-key': '9d4202b218ff9bc5640d6d2694bfc35a',
+        'x-rapidapi-host': 'v3.football.api-sports.io'
+    }
+    team_info = requests.get(url, headers=headers).json().get('response')[0].get('team')
+    team_name = team_info.get('name')
+
+    return render(request, "transfers/team_transfers.html", {'team_id': team_id, 'team_name': team_name, 'transfers': transfers})
 

@@ -29,7 +29,7 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
             {% for team in teams %}
               <div class="col">
-                <a href="{% url 'team-transfers' team_id={{team.id} }%}"
+                <a href="{% url 'team-transfers' team_id=team.id %}"
                    class="text-decoration-none text-dark">
                   <div class="card h-200 d-flex flex-column">
                     <div class="card-img-area">
