@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import requests
+import os
 
 # Create your views here.
 def index(request):
@@ -9,7 +10,7 @@ def team_list(request, pk):
     url = "https://v3.football.api-sports.io/teams?league={league_id}&season=2024".format(league_id=pk)
 
     headers = {
-        'x-rapidapi-key': '9d4202b218ff9bc5640d6d2694bfc35a',
+        'x-rapidapi-key': os.environ['API_KEY'],
         'x-rapidapi-host': 'v3.football.api-sports.io'
     }
 
@@ -22,7 +23,7 @@ def team_transfers(request, team_id):
     url = "https://v3.football.api-sports.io/transfers?team={team_id}".format(team_id=team_id)
 
     headers = {
-        'x-rapidapi-key': '9d4202b218ff9bc5640d6d2694bfc35a',
+        'x-rapidapi-key': os.environ['API_KEY'],
         'x-rapidapi-host': 'v3.football.api-sports.io'
     }
     
@@ -32,7 +33,7 @@ def team_transfers(request, team_id):
     url = "https://v3.football.api-sports.io/teams?id={team_id}".format(team_id=team_id)
 
     headers = {
-        'x-rapidapi-key': '9d4202b218ff9bc5640d6d2694bfc35a',
+        'x-rapidapi-key': os.environ['API_KEY'],
         'x-rapidapi-host': 'v3.football.api-sports.io'
     }
     team_info = requests.get(url, headers=headers).json().get('response')[0].get('team')
