@@ -8,7 +8,7 @@ def index(request):
 
 def team_list(request, pk):
     url = "https://v3.football.api-sports.io/teams?league={league_id}&season=2024".format(league_id=pk)
-
+    
     headers = {
         'x-rapidapi-key': os.environ['API_KEY'],
         'x-rapidapi-host': 'v3.football.api-sports.io'
